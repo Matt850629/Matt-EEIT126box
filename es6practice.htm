@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+</head>
+<body>
+
+<script>
+    //宣告 Hero物件
+    const Hero ={
+            name : 'batman',
+            age  : 25,
+            todos:[
+                {name : 'save people',completed:false},
+                {name : 'married',completed:false},
+                {name:'beat joker',completed:true},
+            ]
+        }
+    //建立函數來使用物件
+    function renderTodos(todos) {
+        return (
+        `
+        <ul>
+            ${todos.map(todo =>`
+                <li>
+                    ${todo.name} ${todo.completed?'✓':'✕'}
+                </li>`).join('')}
+        </ul>
+        `
+        )
+    }
+    //設定模板來套用物件屬性及函數
+    const template = `
+    <div class="panel">
+        <div class="panel-header">${Hero.name}</div>
+            <div class="panel-body">
+                ${renderTodos(Hero.todos)}
+            </div>    
+        <div class="panel-footer">${Hero.age}</div>
+    </div>
+    `
+    //將模板套用到body
+    document.body.innerHTML = template;
+</script>
+</body>
+</html>
